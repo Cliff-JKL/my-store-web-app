@@ -1,0 +1,43 @@
+﻿@model Product
+
+@{
+    Layout = "_Layout";
+}
+
+<form action="/Product/Create" method="post"  enctype="multipart/form-data" class="website-content default-page">
+    <h2 class="default-page-title">@ViewBag.Title</h2>
+    <div class="product-plate">
+        <div class="product-plate-content">
+            <div class="product-model">
+                <div class="product-model-info">
+                    <input name="Id" value="@Model.Id" type="hidden" class="default-field-input" />
+                    <h2 class="product-title">Наименование</h2>
+                    <input name="Name" value="@Model.Name" type="text" class="default-field-input" />
+                    <h2 class="product-title">Цена</h2>
+                    <input name="Price" value="@Model.Price" type="number" class="default-field-input" />
+                    <h2 class="product-title">Количество</h2>
+                    <input name="Number" value="@Model.Number" type="number" class="default-field-input" />
+                    <h2 class="product-title">Категория</h2>
+                    <select name="CategoryId">
+                        @foreach(Subcategory subcategory in ViewBag.Subcategories)
+                        {
+                            <option name="CategoryId" value="@subcategory.Id">@subcategory.Name</option>
+                        }
+                    </select>
+                    <h2 class="product-title">Изображение</h2>
+                    <input type="file" id="imgInput" name="uploadedImage" class="default-field-input" />
+                    <img id="product-img" src="#" style='width:200px; height:200px;' alt="место для изображения" />
+                    <div class="button-plate">
+                        <form action="/Product/Create" method="post">
+                            <button class="add-to-cart-button">Добавить</button>
+                        </form>
+                        <form action="/Home/Index">
+                            <button class="add-to-cart-button">Отмена</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="~/js/product.js"></script>

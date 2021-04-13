@@ -1,0 +1,79 @@
+﻿@model User
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Профиль пользователя";
+}
+
+    <div class="website-content user-page">
+        <h2 class="default-page-title">@ViewBag.Title</h2>
+        <div class="storefront">
+            <div class="navigation-raw">
+                <nav class="navigation"></nav>
+            </div>
+        </div>
+        <div class="user-plate">
+            <div class="user-plate-content">
+                <div class="layout-two-equal-columns">
+                    <div class="user-info">
+                        <h2 class="product-title">Логин</h2>
+                        <p class="product-price">@Model.Login</p>
+                        <h2 class="product-title">Пароль</h2>
+                        <p class="product-price">@Model.Password</p>
+                        <form action="/User/Edit/@Model.Person.Id">
+                            <button class="add-to-cart-button">Изменить данные</button>
+                        </form>
+                    </div>
+                    <div class="user-info">
+                        <h2 class="product-title">Фамилия</h2>
+                        <p class="product-price">@Model.Surname</p>
+                        <h2 class="product-title">Имя</h2>
+                        <p class="product-price">@Model.Name</p>
+                        <h2 class="product-title">Отчество</h2>
+                        <p class="product-price">@Model.Midname</p>
+                        <h2 class="product-title">Номер Телефона</h2>
+                        <p class="product-price">@Model.Phone</p>
+                        <form action="/User/EditCustomer/@Model.Person.Id">
+                            <button class="add-to-cart-button">Изменить данные</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="layout-two-equal-columns">
+                    <div class="user-info">
+                        <h2 class="product-title">Мои заказы</h2>
+                        @if (Model.ProductOrders.Count != 0)
+                        {
+                            @for (int i = Model.ProductOrders.Count-1; i > (Model.ProductOrders.Count >= 3 ? Model.ProductOrders.Count - 4 : -1); i--)
+                            {
+                                <a href="/Order/Details/@Model.ProductOrders[i].Id">№@Model.ProductOrders[i].Id</a>
+                                <p class="product-price">@Model.ProductOrders[i].Cost</p>
+                                <p class="product-price">@Model.ProductOrders[i].OrderDate.ToShortDateString()</p>
+                            }
+                        }
+                        <form action="/Home/order-history">
+                            <button class="add-to-cart-button">История заказов</button>
+                        </form>
+                    </div>
+                    <div class="user-info">
+                        <div class="button-plate">
+                            <form action="/User/Logout">
+                                <button class="add-to-cart-button">Выйти</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <h2 class="product-title">Адрес доставки</h2>
+                        <h2 class="product-title">Город</h2>
+                        <p class="product-price">@Model.City</p>
+                        <h2 class="product-title">Улица</h2>
+                        <p class="product-price">@Model.Street</p>
+                        <h2 class="product-title">Дом</h2>
+                        <p class="product-price">@Model.Building</p>
+                        <form action="/User/EditAddress/@Model.Person.Id">
+                            <button class="add-to-cart-button">Изменить данные</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

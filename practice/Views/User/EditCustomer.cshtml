@@ -1,0 +1,35 @@
+﻿@model Customer
+
+@{
+    Layout = "_Layout";
+}
+
+<form action="/User/EditCustomer" method="post" class="website-content default-page">
+    <h2 class="default-page-title">@ViewBag.Title</h2>
+    <div class="product-plate">
+        <div class="product-plate-content">
+            <div class="product-model">
+                <div class="product-model-info">
+                    <input name="Id" value="@Model.Id" type="hidden" class="default-field-input" />
+                    <input name="PersonId" value="@Model.PersonId" type="hidden" class="default-field-input" />
+                    <h2 class="product-title">Фамилия</h2>
+                    <input name="Surname" value="@Model.Surname" type="text" class="default-field-input" />
+                    <h2 class="product-title">Имя</h2>
+                    <input name="Name" value="@Model.Name" type="text" class="default-field-input" />
+                    <h2 class="product-title">Отчество</h2>
+                    <input name="Midname" value="@Model.Midname" type="text" class="default-field-input" />
+                    <h2 class="product-title">Номер телефона</h2>
+                    <input name="Phone" value="@Model.Phone" type="text" class="default-field-input" />
+                    <div class="button-plate">
+                        <form action="/User/EditCustomer" method="post">
+                            <button class="add-to-cart-button">Сохранить</button>
+                        </form>
+                        <form action="/User/Info">
+                            <button class="add-to-cart-button">Отмена</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,46 @@
+﻿@model ProductOrder
+
+@{
+    Layout = "_Layout";
+}
+
+    <div class="website-content default-page">
+        <h2 class="default-page-title">@ViewBag.Title</h2>
+        <div class="product-plate">
+            <div class="product-plate-content">
+                <div class="product-model">
+                    <div class="product-model-info">
+                        <h2 class="product-title">Сумма: @Model.Cost</h2>
+                        <p class="product-price">Способ получения: Доставка на дом</p>
+                        <p class="product-price">Дата заказа: @Model.OrderDate.ToShortDateString()</p>
+                        <p class="product-price">Контактное лицо: @Model.Customer.Surname @Model.Customer.Name</p>
+                        <p class="product-price">Номер телефона: @Model.Customer.Phone</p>
+                        <p class="product-price">Состав заказа:</p>
+                        @foreach (var pair in ViewBag.orderProducts)
+                        {
+                            <div class="product-model-image">
+                                @if (pair.Key.Image != null)
+                                {
+                                    @Html.Raw("<img style='width:50px; height:50px;' src=\"data:image/jpeg;base64,"
+                                            + Convert.ToBase64String(pair.Key.Image.ImageData) + "\" />")
+                                }
+                                else
+                                {
+                                    <img src="" class="product-image">
+                                    <p>НЕТ ИЗОБРАЖЕНИЯ</p>
+                                }
+                            </div>
+                            <div class="product-model-info">
+                                <h2 class="product-title">
+                                    <a href="/Product/Index/@pair.Key.Id" class="router-link">@pair.Key.Name</a>
+                                </h2>
+                                <p class="product-price">@pair.Key.Price руб.</p>
+                                <p class="product-price">Количество: @pair.Value[0]</p>
+                                <p class="product-price">Сумма: @pair.Value[1] руб.</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

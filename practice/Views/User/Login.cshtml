@@ -1,0 +1,30 @@
+﻿@model Person
+
+@{
+    Layout = "_Layout";
+}
+
+    <form action="/User/Login" method="post" class="website-content default-page">
+        <h2 class="default-page-title">@ViewBag.Title</h2>
+        <div class="product-plate">
+            <div class="product-plate-content">
+                <div class="product-model">
+                    <div class="product-model-info">
+                        <h2 class="product-title">E-mail</h2>
+                        <input name="Email" value="@Model.Email" maxlength="255" type="email" class="default-field-input" />
+                        <h2 class="product-title">Пароль</h2>
+                        <input name="Password" value="@Model.Password" maxlength="50" type="password" class="default-field-input" />
+                        <div class="button-plate">
+                            <form action="/User/Login" method="post">
+                                <button class="add-to-cart-button">Войти</button>
+                            </form>
+                            <form action="/User/Registration" method="get">
+                                <button class="add-to-cart-button">Регистрация</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+

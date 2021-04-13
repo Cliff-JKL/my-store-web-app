@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ProductOrder>
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="website-content default-page">
+    <h2 class="default-page-title">@ViewBag.Title</h2>
+    <div class="product-plate">
+        <div class="product-plate-content">
+            <div class="product-model">
+                <div class="product-model-info">
+                    @foreach (ProductOrder order in Model)
+                    {
+                        <a href="/Order/Details/@order.Id">
+                            <h2 class="product-title">№: @order.Id</h2>
+                        </a>
+                        <p class="product-price">от @order.OrderDate.ToShortDateString()</p>
+                        <p class="product-price">@order.Cost  руб.</p>
+                        <p class="product-price">статус: @order.Status.Name</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿@model Address
+
+@{
+    Layout = "_Layout";
+}
+
+<form action="/User/EditAddress" method="post" class="website-content default-page">
+    <h2 class="default-page-title">@ViewBag.Title</h2>
+    <div class="product-plate">
+        <div class="product-plate-content">
+            <div class="product-model">
+                <div class="product-model-info">
+                    <input name="Id" value="@Model.Id" type="hidden" class="default-field-input" />
+                    <input name="PersonId" value="@Model.PersonId" type="hidden" class="default-field-input" />
+                    <h2 class="product-title">Город</h2>
+                    <input name="City" value="@Model.City" type="text" class="default-field-input" />
+                    <h2 class="product-title">Улица</h2>
+                    <input name="Street" value="@Model.Street" type="text" class="default-field-input" />
+                    <h2 class="product-title">Дом</h2>
+                    <input name="Building" value="@Model.Building" type="text" class="default-field-input" />
+                    <div class="button-plate">
+                        <form action="/User/EditAddress" method="post">
+                            <button class="add-to-cart-button">Сохранить</button>
+                        </form>
+                        <form action="/User/Info">
+                            <button class="add-to-cart-button">Отмена</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

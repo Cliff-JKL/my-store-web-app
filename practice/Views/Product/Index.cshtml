@@ -1,0 +1,39 @@
+﻿@model Product
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="storefront">
+    <div class="navigation-raw">
+        <nav class="navigation"></nav>
+    </div>
+</div>
+<div class="website-content default-page">
+    <div class="product-plate">
+        <div class="product-plate-content">
+            <div class="product-model">
+                <div class="product-model-image">
+                    @if (Model.Image != null)
+                    {
+                        @Html.Raw("<img src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.Image.ImageData) + "\" style='width:500px; height:500px;'/>")
+                    }
+                    else
+                    {
+                        <img src="" class="product-image">
+                        <p>НЕТ ИЗОБРАЖЕНИЯ</p>
+                    }
+                </div>
+                <div class="product-model-info">
+                    <h2 class="product-title">@Model.Name</h2>
+                    <p class="product-price">@Model.Price руб.</p>
+                    <div class="button-plate">
+                        <button product-id=@Model.Id class="add-to-cart-button">в корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/home.js"></script>
