@@ -10,6 +10,6 @@ You should configure your database connection settings in **appsettings.json** f
 
 Start:
 
-### `dotnet run --project practice/practice.sln`
+### `dotnet run --project practice/practice.csproj`
 
 Open in browser: (http://localhost:5001).
